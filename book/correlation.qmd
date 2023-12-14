@@ -1,0 +1,9 @@
+---
+title: "correlation"
+format: html
+editor: visual
+filters:
+  - webr
+---
+
+Visualize correlations between different variables over time. Use line charts, scatter plots, or other techniques to showcase relationships between time-varying data points.

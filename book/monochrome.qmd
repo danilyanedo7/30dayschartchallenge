@@ -1,0 +1,8 @@
+---
+title: "monochrome"
+format: html
+editor: visual
+filters:
+  - webr
+---
+Use monochrome visualization to highlight uncertainties effectively. This involves using varying shades of a single color to represent different levels of certainty or ambiguity in the data.

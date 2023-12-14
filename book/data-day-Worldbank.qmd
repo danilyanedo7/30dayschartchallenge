@@ -1,0 +1,8 @@
+---
+title: " data day: Worldbank"
+format: html
+editor: visual
+filters:
+  - webr
+---
+Dedicate a day to exploring data from the World Bank, applying the chosen theme to datasets available from this international financial institution.

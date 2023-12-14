@@ -1,0 +1,9 @@
+---
+title: "tiles"
+format: html
+editor: visual
+filters:
+  - webr
+---
+
+Use tiled charts to represent multiple time series effectively. This allows for a clear comparison of trends across different variables or datasets.

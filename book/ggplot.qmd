@@ -8,31 +8,29 @@ filters:
   - webr
 ---
 
-::: {.callout-warning}
+::: callout-warning
 Installing and loading ggplot2 on webR takes a little while.
 :::
 
 ### Basic plotting
 
-* Load the package and some data
+-   Load the package and some data
 
 ```{webr-r}
 library(ggplot2)
 ```
 
-* create a plot 
+-   create a plot
 
 ```{webr-r}
 ggplot(data = mtcars, mapping = aes(x = mpg, y = hp)) +
   geom_point()
 ```
 
-
-::: {.callout-note}
+::: callout-note
 ## Exercise
 
-Make a scatter plot with `hp` on the x axis and `wt` on the y axis. Label the x axis "Horse Power" and the y axis “Weight”.
-Make one subplot for each value in `gear`.
+Make a scatter plot with `hp` on the x axis and `wt` on the y axis. Label the x axis "Horse Power" and the y axis "Weight". Make one subplot for each value in `gear`.
 
 ```{webr-r}
 # Add you code here

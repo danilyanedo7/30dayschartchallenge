@@ -1,0 +1,9 @@
+---
+title: "newtool"
+format: html
+editor: visual
+filters:
+  - webr
+---
+
+Explore charts that depict the introduction or impact of a new tool or technology. Visualize adoption rates, user engagement, or any relevant metrics.

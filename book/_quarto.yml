@@ -7,24 +7,51 @@ project:
     - _headers
 
 book:
-  title: "Book Title"
-  author: "Koen Hufkens"
+  title: "My contribution to 30 days chart challenge"
+  author: "Edo Danilyan"
   date: "2023/01/01"
   page-navigation: true
   chapters:
     - index.qmd
-    - intro.qmd
-    - basicr.qmd
-    - ggplot.qmd
+    - part-to-whole.qmd
+    - waffle.qmd
+    - fauna-flora.qmd
+    - historical.qmd
+    - slope.qmd
+    - dataday-OWID.qmd
+    - hazards.qmd
+    - humans.qmd
+    - high:low.qmd
+    - hybrid.qmd
+    - circular.qmd
+    - theme-day-BBCNews.qmd
+    - pop-culture.qmd
+    - newtool.qmd
+    - positive-negative.qmd
+    - family.qmd
+    - networks.qmd
+    - data-day-EuroStat.qmd
+    - anthropocene.qmd
+    - correlation.qmd
+    - down-upwards.qmd
+    - green-energy.qmd
+    - tiles.qmd
+    - theme-dayUN-Woman.qmd
+    - global-change.qmd
+    - local-change.qmd
+    - good-bad.qmd
+    - trend.qmd
+    - monochrome.qmd
+    - data-day-Worldbank.qmd
     - references.qmd
   favicon: "figures/favicon.ico"
   twitter-card: true
   search: true
-  repo-url: https://github.com/bluegreen-labs/R_book_template/
+  repo-url: https://github.com/danilyanedo7/30dayschartchallenge
   sharing: [twitter, facebook]
   navbar:
     title: ""
-    logo: "https://bluegreenlabs.org/img/logo_text_small.png"
+    logo: ""
     background: "#0b2735"
     search: true
     right:

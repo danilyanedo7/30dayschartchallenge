@@ -1,0 +1,9 @@
+---
+title: "pop culture"
+format: html
+editor: visual
+filters:
+  - webr
+---
+
+Visualize data that reflects relationships within popular culture. This could include trends in music, social media, or entertainment preferences.

@@ -1,0 +1,9 @@
+---
+title: "trend"
+format: html
+editor: visual
+filters:
+  - webr
+---
+
+Illustrate trends and uncertainties in data over time. Use charts that effectively convey both the direction and degree of uncertainty in trends.

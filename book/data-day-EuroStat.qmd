@@ -1,0 +1,8 @@
+---
+title: "data day:   EuroStat"
+format: html
+editor: visual
+filters:
+  - webr
+---
+Dedicate a day to exploring data from EuroStat, applying the chosen theme to datasets available from this statistical office of the European Union.

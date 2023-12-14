@@ -1,0 +1,44 @@
+---
+title: "part-to-whole"
+format: html
+filters:
+  - webr
+---
+
+Explore the relationship between a whole and its components, showcasing proportions and percentages. Ideal for visualizing contributions of individual elements to the overall entity.
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(ggrepel)
+```
+
+```{r}
+data <- read.csv("dataset/insurance.csv")
+```
+
+
+```{r}
+type.cols <- c("no" = "white",
+               "yes" = "#fcefb4")
+data %>%
+    group_by(sex, smoker) %>%
+    summarise(count = n()) %>%
+    mutate(percentage = count / sum(count) * 100) %>%
+    ggplot(aes(x = percentage, y = sex, fill = smoker)) +
+    geom_bar(stat = "identity", position = "stack", color = "black", width=0.2) +
+  annotate(geom = "text", x = 13.5, y = 2.2, label = "Smoke")+
+  annotate(geom = "text", x = 60, y = 2.2, label = "Doesn't Smoke")+
+    scale_fill_manual(values = type.cols) +  # Manually set fill colors
+    ylab("") +
+  labs(title = "")+
+    xlab("") +
+    guides(fill = guide_legend(title = "Type", override.aes = aes(label = ""))) +
+    theme_classic() +
+  theme(legend.position = "none")
+
+
+
+```
+ 
+ 

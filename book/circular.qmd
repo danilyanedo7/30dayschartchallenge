@@ -1,0 +1,9 @@
+---
+title: "circular"
+format: html
+editor: visual
+filters:
+  - webr
+---
+
+Use circular charts to represent distributions in a visually appealing manner. Explore pie charts, radial bar charts, or circular heatmaps to convey data distributions.

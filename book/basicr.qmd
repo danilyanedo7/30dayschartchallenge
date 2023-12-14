@@ -26,7 +26,7 @@ Show the first rows of a table.
 head(mtcars)
 ```
 
-::: {.callout-note}
+::: callout-note
 ## Exercise
 
 Show the last rows of the `mtcars` table.

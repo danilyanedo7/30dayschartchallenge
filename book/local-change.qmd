@@ -1,0 +1,73 @@
+---
+title: "local change"
+format: html
+editor: visual
+filters:
+  - webr
+---
+## Install and load the tidyverse and ggplot2 packages if not already installed
+
+```{r}
+if (!require(tidyverse)) {
+  install.packages("tidyverse")
+  library(tidyverse)
+}
+if (!require(ggplot2)) {
+  install.packages("ggplot2")
+  library(ggplot2)
+}
+
+if (!require(viridis)) {
+  install.packages("viridis")
+  library(viridis)
+}
+
+```
+
+## Assuming data, temps, and years are already defined
+
+```{r}
+data <- data <- read_csv('dataset/FAOSTAT_data_1-10-2022.csv')
+```
+
+
+## Filter data based on conditions
+```{r}
+country <- 'Indonesia'
+
+filtered_data <- data %>%
+  # filter(Area == country, Months == "July" | Months == "December" ) %>%
+  filter(Area == country) 
+
+
+temps <- filtered_data$Value
+years <- filtered_data$Year
+month <- filtered_data$Months
+```
+
+
+## Create a data frame with the extracted data
+```{r}
+df <- data.frame(Year = years, Temperature = temps, month)
+df <- df %>% 
+  group_by(Year) %>%
+  summarise(Temperature = mean(Temperature))
+```
+
+
+## Create the ggplot with a bar chart and colormap
+```{r}
+plot <- ggplot(df, aes(x = Year, y = Temperature, fill = Temperature)) +
+  geom_bar(stat = "identity") +
+  scale_fill_viridis(option = "C") +
+  labs(title = paste(" Overall temperature change in Indonesia"),
+       y = "Δ°C") +
+  theme_minimal()
+
+```
+
+## Print the plot
+```{r}
+plot
+```
+

@@ -1,0 +1,9 @@
+---
+title: "theme day:   BBC News"
+format: html
+editor: visual
+filters:
+  - webr
+---
+
+Apply the chosen theme using data or topics related to BBC News. This could involve visualizing news trends, audience engagement, or other relevant metrics.

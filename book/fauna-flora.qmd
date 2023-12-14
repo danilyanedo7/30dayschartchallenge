@@ -1,0 +1,10 @@
+---
+title: "fauna-flora"
+format: html
+editor: visual
+filters:
+  - webr
+---
+
+Infuse creativity by using nature-inspired visuals, such as animal or plant shapes, to represent data points. 
+

@@ -1,0 +1,77 @@
+---
+title: "data day: OWID"
+format: html
+editor: visual
+filters:
+  - webr
+---
+
+Dedicate a day to exploring data from Our World in Data (OWID), applying the chosen theme to the datasets available on this platform.
+
+
+
+```{r setup, include=TRUE}
+library(highcharter) 
+library(viridis) 
+library(tidyverse) 
+library(countrycode) 
+library(crosstalk) 
+library(plotly) 
+```
+
+```{r }
+
+#### 
+
+data1 <- read.csv("dataset/number-of-deaths-from-tetanus.csv")
+data11 <- data1 %>%
+  select(Year, Deaths) %>%
+  group_by(Year) %>%
+  summarise(Deaths = round((sum(Deaths))), 2)
+##
+country_tibble1 <- data1 %>%
+  select(Entity, Deaths) %>%
+  filter(Entity != 'African Region (WHO)',
+         Entity != 'East Asia & Pacific (WB)',
+         Entity != 'Eastern Mediterranean Region (WHO)',
+         Entity != 'Europe & Central Asia (WB)',
+         Entity != 'European Region (WHO)',
+         Entity != 'G20',
+         Entity != 'Latin America & Caribbean (WB)',
+         Entity != 'Middle East & North Africa (WB)',
+         Entity != 'North America (WB)',
+         Entity != 'OECD Countries',
+         Entity != 'Region of the Americas (WHO)',
+         Entity != 'South Asia (WB)',
+         Entity != 'South-East Asia Region (WHO)',
+         Entity != 'Sub-Saharan Africa (WB)',
+         Entity != 'Western Pacific Region (WHO)',
+         Entity != 'World Bank High Income',
+         Entity != 'World Bank Low Income',
+         Entity != 'World Bank Lower Middle Income',
+         Entity != 'World Bank Upper Middle Income',
+         Entity != 'World')%>%
+  group_by(Entity) %>%
+  summarize(Deaths = round((sum(Deaths))), 2) 
+
+```
+
+
+## Map 
+```{r}
+highchart() %>%
+  hc_add_series_map(worldgeojson, country_tibble1, value = "Deaths", 
+                    joinBy = c('name','Entity'))  %>% 
+  # hc_colors(cols) %>%
+  # hc_colorAxis(dataClasses = color_classes(c(seq(0, 1500000, by = 250000)))) %>% 
+  hc_colorAxis(stops = color_stops(8, c("#fee08b","#cc0000"))) %>% 
+  hc_title(text = "Deaths from tetanus by country") %>% 
+  hc_subtitle(text = "1990-2019") %>%
+  hc_tooltip(borderWidth = 1.5, headerFormat = "", valueSuffix = " deaths")
+
+
+```
+
+
+The data set used to create the dashboard can be found at:   
+https://ourworldindata.org/tetanus

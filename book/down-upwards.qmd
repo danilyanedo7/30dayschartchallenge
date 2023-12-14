@@ -1,0 +1,8 @@
+---
+title: "down/upwards"
+format: html
+editor: visual
+filters:
+  - webr
+---
+Showcase trends with downward or upward trajectories. This could involve visualizing economic trends, market movements, or any data that exhibits directional changes.

@@ -1,0 +1,21 @@
+---
+title: "waffle"
+format: html
+editor: visual
+filters:
+  - webr
+---
+
+Utilize waffle charts, a grid of small squares or cells, to represent percentages visually. Each cell represents a portion of the whole, making it effective for illustrating part-to-whole relationships.
+
+```{r}
+library(waffle)
+
+# Create a Vector
+x <- c( Awake= 17, Sleep = 7)
+
+# Waffle chart
+waffle(x, rows = 4)+
+  labs(title = "I sleep 7 hours a day on average", subtitle = "Source: self tracking device")
+```
+

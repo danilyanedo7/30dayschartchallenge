@@ -1,0 +1,9 @@
+---
+title: "networks"
+format: html
+editor: visual
+filters:
+  - webr
+---
+
+Visualize complex relationships and connections in network data. Explore network graphs and charts to represent intricate relationships between nodes.

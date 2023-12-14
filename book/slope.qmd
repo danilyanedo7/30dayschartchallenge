@@ -1,0 +1,9 @@
+---
+title: "slope"
+format: html
+editor: visual
+filters:
+  - webr
+---
+
+Implement slope charts to depict the rate of change between two points. This is particularly useful for illustrating trends and making comparisons between different periods.

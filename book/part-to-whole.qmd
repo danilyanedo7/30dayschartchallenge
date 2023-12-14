@@ -8,6 +8,7 @@ filters:
 Explore the relationship between a whole and its components, showcasing proportions and percentages. Ideal for visualizing contributions of individual elements to the overall entity.
 
 ```{r}
+library(tidyverse)
 library(dplyr)
 library(ggplot2)
 library(ggrepel)

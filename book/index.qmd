@@ -1,9 +1,5 @@
 # Preface {.unnumbered}
 
-This is a Quarto book.
+Oh, Hi Guys, I am Edo Danilyan. Recently graduated from graduate program in Institut Teknologi Sepuluh Nopember majoring biology. This book is dedicated webpages for my 30 day chart challenge contribution. I haven't completed the challenge, but I will always update it. 
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
-
-```{r}
-1 + 1
-```
+You can visit my main website in https://edodanilyan.com/.

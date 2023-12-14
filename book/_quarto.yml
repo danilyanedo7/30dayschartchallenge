@@ -9,7 +9,7 @@ project:
 book:
   title: "My contribution to 30 days chart challenge"
   author: "Edo Danilyan"
-  date: "2023/01/01"
+  date: "2023/12/14"
   page-navigation: true
   chapters:
     - index.qmd

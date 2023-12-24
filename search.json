@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "My contribution to 30 days chart challenge",
     "section": "",
-    "text": "Preface\nOh, Hi Guys, I am Edo Danilyan. Recently graduated from graduate program in Institut Teknologi Sepuluh Nopember majoring biology. This book is dedicated webpages for my 30 day chart challenge contribution. I haven’t completed the challenge, but I will always update it.\nYou can visit my main website in https://edodanilyan.com/."
+    "text": "Preface\nOh, hi Guys, I am Edo Danilyan. Recently graduated from graduate program in Institut Teknologi Sepuluh Nopember majoring biology. This book is dedicated webpages for my 30 day chart challenge contribution. I haven’t completed the challenge, but I will always update it.\nYou can visit my main website in https://edodanilyan.com/."
   },
   {
     "objectID": "part-to-whole.html",
@@ -21,53 +21,116 @@
     "text": "Utilize waffle charts, a grid of small squares or cells, to represent percentages visually. Each cell represents a portion of the whole, making it effective for illustrating part-to-whole relationships.\n\nlibrary(waffle)\n\nLoading required package: ggplot2\n\n# Create a Vector\nx &lt;- c( Awake= 17, Sleep = 7)\n\n# Waffle chart\nwaffle(x, rows = 4)+\n  labs(title = \"I sleep 7 hours a day on average\", subtitle = \"Source: self tracking device\")"
   },
   {
-    "objectID": "fauna-flora.html",
-    "href": "fauna-flora.html",
+    "objectID": "fauna-flora.html#source",
+    "href": "fauna-flora.html#source",
     "title": "3  fauna-flora",
-    "section": "",
-    "text": "Infuse creativity by using nature-inspired visuals, such as animal or plant shapes, to represent data points."
+    "section": "3.1 Source",
+    "text": "3.1 Source\nDataset: https://allisonhorst.github.io/palmerpenguins/"
   },
   {
-    "objectID": "historical.html#quarto",
-    "href": "historical.html#quarto",
+    "objectID": "fauna-flora.html#setup",
+    "href": "fauna-flora.html#setup",
+    "title": "3  fauna-flora",
+    "section": "3.2 Setup",
+    "text": "3.2 Setup\n\nlibrary(highcharter) \nlibrary(viridis) \nlibrary(tidyverse) \nlibrary(crosstalk) \nlibrary(plotly) \nlibrary(palmerpenguins)\nlibrary(reactable)\nlibrary(reactablefmtr)\nlibrary(dataui)"
+  },
+  {
+    "objectID": "fauna-flora.html#a-glimps-of-palmer-penguin-dataset",
+    "href": "fauna-flora.html#a-glimps-of-palmer-penguin-dataset",
+    "title": "3  fauna-flora",
+    "section": "3.3 A Glimps of Palmer Penguin Dataset",
+    "text": "3.3 A Glimps of Palmer Penguin Dataset\n\nreactable(penguins, style = list(height = \"auto\", fullWidth = FALSE)) %&gt;% \n  add_title(\n    title = reactablefmtr::html(\"Palmer Penguins &lt;img src='https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/man/figures/lter_penguins.png' alt='Palmer Penguins' width='120' height='60'&gt;\"),\n    font_size = 16\n  ) %&gt;% \n  add_subtitle(\n    subtitle = 'Palmer Archipelago (Antarctica) penguin data',\n    font_size = 14,\n    font_color = '#666666',\n    margin = reactablefmtr::margin(t=0,r=0,b=0,l=0)\n  )\n\n\nPalmer Penguins \nPalmer Archipelago (Antarctica) penguin data"
+  },
+  {
+    "objectID": "fauna-flora.html#visualization",
+    "href": "fauna-flora.html#visualization",
+    "title": "3  fauna-flora",
+    "section": "3.4 Visualization",
+    "text": "3.4 Visualization\n\npenguins %&gt;%\n  group_by(species) %&gt;%\n  na.omit(.) %&gt;% \n  summarize(across(where(is.numeric), list)) %&gt;%\n  mutate(penguin_colors = case_when(\n    species == 'Adelie' ~ '#F5A24B',\n    species == 'Chinstrap' ~ '#AF52D5',\n    species == 'Gentoo' ~ '#4C9B9B',\n    TRUE ~ 'grey'\n  )) %&gt;% \n  select(-c(year,flipper_length_mm,bill_depth_mm, bill_length_mm)) %&gt;% \nreactable(\n  .,\n  theme = default(centered = TRUE),\n  compact = TRUE,\n  columns = list(\n    species = colDef(\n      name = 'Species',\n      align = 'center',\n      maxWidth = 110,\n        cell = pill_buttons(\n          data = .,\n          color_ref = 'penguin_colors',\n          text_size = 14,\n          brighten_text = FALSE,\n          bold_text = TRUE\n        )\n    ),\n    penguin_colors = colDef(show = FALSE),\n    body_mass_g = colDef(\n      name = 'Body Mass (g)',\n      align = 'center',\n      maxWidth = 900,\n      cell = react_sparkbar(\n        data = .,\n        fill_color_ref = 'penguin_colors',\n        statline = 'median',\n        height = 135,\n        statline_color = '#252525',\n        statline_label_size = '1.1em',\n        tooltip_type = 2,\n        margin = reactablefmtr::margin(r = 48)\n      )\n    )\n  )\n)"
+  },
+  {
+    "objectID": "historical.html#setup",
+    "href": "historical.html#setup",
     "title": "4  historical",
-    "section": "4.1 Quarto",
-    "text": "4.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+    "section": "4.1 Setup",
+    "text": "4.1 Setup\n\nlibrary(highcharter) \nlibrary(viridis) \nlibrary(tidyverse) \nlibrary(countrycode) \nlibrary(crosstalk) \nlibrary(plotly)"
   },
   {
-    "objectID": "historical.html#running-code",
-    "href": "historical.html#running-code",
+    "objectID": "historical.html#data-preparation",
+    "href": "historical.html#data-preparation",
     "title": "4  historical",
-    "section": "4.2 Running Code",
-    "text": "4.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
+    "section": "4.2 Data preparation",
+    "text": "4.2 Data preparation\n\ndata1 &lt;- read.csv(\"dataset/number-of-deaths-from-tetanus.csv\")\ndata11 &lt;- data1 %&gt;%\n  select(Year, Deaths) %&gt;%\n  group_by(Year) %&gt;%\n  summarise(Deaths = round((sum(Deaths))), 2)\n##\ncountry_tibble1 &lt;- data1 %&gt;%\n  select(Entity, Deaths) %&gt;%\n  filter(Entity != 'African Region (WHO)',\n         Entity != 'East Asia & Pacific (WB)',\n         Entity != 'Eastern Mediterranean Region (WHO)',\n         Entity != 'Europe & Central Asia (WB)',\n         Entity != 'European Region (WHO)',\n         Entity != 'G20',\n         Entity != 'Latin America & Caribbean (WB)',\n         Entity != 'Middle East & North Africa (WB)',\n         Entity != 'North America (WB)',\n         Entity != 'OECD Countries',\n         Entity != 'Region of the Americas (WHO)',\n         Entity != 'South Asia (WB)',\n         Entity != 'South-East Asia Region (WHO)',\n         Entity != 'Sub-Saharan Africa (WB)',\n         Entity != 'Western Pacific Region (WHO)',\n         Entity != 'World Bank High Income',\n         Entity != 'World Bank Low Income',\n         Entity != 'World Bank Lower Middle Income',\n         Entity != 'World Bank Upper Middle Income',\n         Entity != 'World')%&gt;%\n  group_by(Entity) %&gt;%\n  summarize(Deaths = round((sum(Deaths))), 2)"
   },
   {
-    "objectID": "slope.html",
-    "href": "slope.html",
+    "objectID": "historical.html#worldwide-deaths-from-tetanus-infection",
+    "href": "historical.html#worldwide-deaths-from-tetanus-infection",
+    "title": "4  historical",
+    "section": "4.3 Worldwide deaths from tetanus infection",
+    "text": "4.3 Worldwide deaths from tetanus infection\n\nhighchart() %&gt;% \n  hc_add_series(data11, hcaes(x = Year, y = Deaths), type = \"line\") %&gt;%\n  hc_tooltip(crosshairs = TRUE, borderWidth = 1.5, headerFormat = \"\", pointFormat = paste(\"Year: &lt;b&gt;{point.x}&lt;/b&gt; &lt;br&gt; Deaths: &lt;b&gt;{point.y}&lt;/b&gt;\")) %&gt;%\n  hc_title(text = \"Worldwide cases of death from tetanus\") %&gt;% \n  hc_subtitle(text = \"1990-2019\") %&gt;%\n  hc_colorAxis(minColor = \"yellow\", maxColor = \"#592822\") %&gt;%\n  hc_xAxis(title = list(text = \"Year\")) %&gt;%\n  hc_yAxis(title = list(text = \"Deaths\"),\n           allowDecimals = FALSE,\n           plotLines = list(list(\n             color = \"black\", width = 1, dashStyle = \"Dash\", \n             value = mean(data11$Deaths),\n             label = list(text = \"Mean = 667745.9\", \n                          style = list(color = \"black\"))))) %&gt;%\n  hc_legend(enabled = FALSE)"
+  },
+  {
+    "objectID": "slope.html#setup",
+    "href": "slope.html#setup",
     "title": "5  slope",
-    "section": "",
-    "text": "Implement slope charts to depict the rate of change between two points. This is particularly useful for illustrating trends and making comparisons between different periods."
+    "section": "5.1 Setup",
+    "text": "5.1 Setup\n\nlibrary(tidyverse) \nlibrary(CGPfunctions)"
+  },
+  {
+    "objectID": "slope.html#data-preparation",
+    "href": "slope.html#data-preparation",
+    "title": "5  slope",
+    "section": "5.2 Data preparation",
+    "text": "5.2 Data preparation\n\nnewcancer %&gt;%\n  filter()\n\n      Year             Type Survival\n1   5 Year         Prostate       99\n2  10 Year         Prostate       95\n3  15 Year         Prostate       87\n4  20 Year         Prostate       81\n5   5 Year          Thyroid       96\n6  10 Year          Thyroid       96\n7  15 Year          Thyroid       94\n8  20 Year          Thyroid       95\n9   5 Year           Testis       95\n10 10 Year           Testis       94\n11 15 Year           Testis       91\n12 20 Year           Testis       88\n13  5 Year        Melanomas       89\n14 10 Year        Melanomas       87\n15 15 Year        Melanomas       84\n16 20 Year        Melanomas       83\n17  5 Year           Breast       86\n18 10 Year           Breast       78\n19 15 Year           Breast       71\n20 20 Year           Breast       75\n21  5 Year        Hodgkin's       85\n22 10 Year        Hodgkin's       80\n23 15 Year        Hodgkin's       74\n24 20 Year        Hodgkin's       67\n25  5 Year           Uterus       84\n26 10 Year           Uterus       83\n27 15 Year           Uterus       81\n28 20 Year           Uterus       79\n29  5 Year          Urinary       82\n30 10 Year          Urinary       76\n31 15 Year          Urinary       70\n32 20 Year          Urinary       68\n33  5 Year           Cervix       71\n34 10 Year           Cervix       64\n35 15 Year           Cervix       63\n36 20 Year           Cervix       60\n37  5 Year           Larynx       69\n38 10 Year           Larynx       57\n39 15 Year           Larynx       46\n40 20 Year           Larynx       38\n41  5 Year           Rectum       63\n42 10 Year           Rectum       55\n43 15 Year           Rectum       52\n44 20 Year           Rectum       49\n45  5 Year           Kidney       62\n46 10 Year           Kidney       54\n47 15 Year           Kidney       50\n48 20 Year           Kidney       47\n49  5 Year            Colon       62\n50 10 Year            Colon       55\n51 15 Year            Colon       54\n52 20 Year            Colon       52\n53  5 Year    Non-Hodgkin's       58\n54 10 Year    Non-Hodgkin's       46\n55 15 Year    Non-Hodgkin's       38\n56 20 Year    Non-Hodgkin's       34\n57  5 Year             Oral       57\n58 10 Year             Oral       46\n59 15 Year             Oral       38\n60 20 Year             Oral       33\n61  5 Year            Ovary       55\n62 10 Year            Ovary       49\n63 15 Year            Ovary       50\n64 20 Year            Ovary       50\n65  5 Year         Leukemia       43\n66 10 Year         Leukemia       32\n67 15 Year         Leukemia       30\n68 20 Year         Leukemia       26\n69  5 Year            Brain       32\n70 10 Year            Brain       29\n71 15 Year            Brain       28\n72 20 Year            Brain       26\n73  5 Year Multiple myeloma       30\n74 10 Year Multiple myeloma       13\n75 15 Year Multiple myeloma        7\n76 20 Year Multiple myeloma        5\n77  5 Year          Stomach       24\n78 10 Year          Stomach       19\n79 15 Year          Stomach       19\n80 20 Year          Stomach       15\n81  5 Year             Lung       15\n82 10 Year             Lung       11\n83 15 Year             Lung        7\n84 20 Year             Lung        6\n85  5 Year        Esophagus       14\n86 10 Year        Esophagus        8\n87 15 Year        Esophagus        8\n88 20 Year        Esophagus        5\n89  5 Year            Liver        8\n90 10 Year            Liver        6\n91 15 Year            Liver        6\n92 20 Year            Liver        8\n93  5 Year         Pancreas        4\n94 10 Year         Pancreas        3\n95 15 Year         Pancreas        3\n96 20 Year         Pancreas        3\n\ndf &lt;- newcancer[1:32, ]"
+  },
+  {
+    "objectID": "slope.html#data-visualization",
+    "href": "slope.html#data-visualization",
+    "title": "5  slope",
+    "section": "5.3 Data visualization",
+    "text": "5.3 Data visualization\n\nnewggslopegraph(dataframe = df,\n                Times = Year,\n                Measurement = Survival,\n                Grouping = Type,\n                Title = \"\",\n                SubTitle = \"\",\n                LineColor =  c(\"firebrick\", rep(\"gray\",4), \"firebrick\", rep(\"gray\",2)),\n                Caption = NULL)"
+  },
+  {
+    "objectID": "dataday-OWID.html#setup",
+    "href": "dataday-OWID.html#setup",
+    "title": "6  data day: OWID",
+    "section": "6.1 Setup",
+    "text": "6.1 Setup\n\nlibrary(highcharter) \nlibrary(viridis) \nlibrary(tidyverse) \nlibrary(countrycode) \nlibrary(crosstalk) \nlibrary(plotly)"
+  },
+  {
+    "objectID": "dataday-OWID.html#dataset-preparation",
+    "href": "dataday-OWID.html#dataset-preparation",
+    "title": "6  data day: OWID",
+    "section": "6.2 Dataset preparation",
+    "text": "6.2 Dataset preparation\n\ndata1 &lt;- read.csv(\"dataset/number-of-deaths-from-tetanus.csv\")\ndata11 &lt;- data1 %&gt;%\n  select(Year, Deaths) %&gt;%\n  group_by(Year) %&gt;%\n  summarise(Deaths = round((sum(Deaths))), 2)\n\ncountry_tibble1 &lt;- data1 %&gt;%\n  select(Entity, Deaths) %&gt;%\n  filter(Entity != 'African Region (WHO)',\n         Entity != 'East Asia & Pacific (WB)',\n         Entity != 'Eastern Mediterranean Region (WHO)',\n         Entity != 'Europe & Central Asia (WB)',\n         Entity != 'European Region (WHO)',\n         Entity != 'G20',\n         Entity != 'Latin America & Caribbean (WB)',\n         Entity != 'Middle East & North Africa (WB)',\n         Entity != 'North America (WB)',\n         Entity != 'OECD Countries',\n         Entity != 'Region of the Americas (WHO)',\n         Entity != 'South Asia (WB)',\n         Entity != 'South-East Asia Region (WHO)',\n         Entity != 'Sub-Saharan Africa (WB)',\n         Entity != 'Western Pacific Region (WHO)',\n         Entity != 'World Bank High Income',\n         Entity != 'World Bank Low Income',\n         Entity != 'World Bank Lower Middle Income',\n         Entity != 'World Bank Upper Middle Income',\n         Entity != 'World')%&gt;%\n  group_by(Entity) %&gt;%\n  summarize(Deaths = round((sum(Deaths))), 2)"
   },
   {
     "objectID": "dataday-OWID.html#map",
     "href": "dataday-OWID.html#map",
     "title": "6  data day: OWID",
-    "section": "6.1 Map",
-    "text": "6.1 Map\n\nhighchart() %&gt;%\n  hc_add_series_map(worldgeojson, country_tibble1, value = \"Deaths\", \n                    joinBy = c('name','Entity'))  %&gt;% \n  # hc_colors(cols) %&gt;%\n  # hc_colorAxis(dataClasses = color_classes(c(seq(0, 1500000, by = 250000)))) %&gt;% \n  hc_colorAxis(stops = color_stops(8, c(\"#fee08b\",\"#cc0000\"))) %&gt;% \n  hc_title(text = \"Deaths from tetanus by country\") %&gt;% \n  hc_subtitle(text = \"1990-2019\") %&gt;%\n  hc_tooltip(borderWidth = 1.5, headerFormat = \"\", valueSuffix = \" deaths\")\n\n\n\n\n\n\nThe data set used to create the dashboard can be found at:\nhttps://ourworldindata.org/tetanus"
+    "section": "6.3 Map",
+    "text": "6.3 Map\n\nhighchart() %&gt;%\n  hc_add_series_map(worldgeojson, country_tibble1, value = \"Deaths\", \n                    joinBy = c('name','Entity'))  %&gt;% \n  # hc_colors(cols) %&gt;%\n  # hc_colorAxis(dataClasses = color_classes(c(seq(0, 1500000, by = 250000)))) %&gt;% \n  hc_colorAxis(stops = color_stops(8, c(\"#fee08b\",\"#cc0000\"))) %&gt;% \n  hc_title(text = \"Deaths from tetanus by country\") %&gt;% \n  hc_subtitle(text = \"1990-2019\") %&gt;%\n  hc_tooltip(borderWidth = 1.5, headerFormat = \"\", valueSuffix = \" deaths\")\n\n\n\n\n\n\nThe data set used to create the dashboard can be found at:\nhttps://ourworldindata.org/tetanus"
   },
   {
-    "objectID": "hazards.html#quarto",
-    "href": "hazards.html#quarto",
+    "objectID": "hazards.html#setup",
+    "href": "hazards.html#setup",
     "title": "7  hazards",
-    "section": "7.1 Quarto",
-    "text": "7.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+    "section": "7.1 Setup",
+    "text": "7.1 Setup\n\nlibrary(survminer)\nrequire(survival)"
   },
   {
-    "objectID": "hazards.html#running-code",
-    "href": "hazards.html#running-code",
+    "objectID": "hazards.html#data-preparation",
+    "href": "hazards.html#data-preparation",
     "title": "7  hazards",
-    "section": "7.2 Running Code",
-    "text": "7.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
+    "section": "7.2 Data preparation",
+    "text": "7.2 Data preparation\n\ndata(\"lung\")\ndf &lt;- survfit(Surv(time, status) ~ sex, data = lung)"
+  },
+  {
+    "objectID": "hazards.html#data-visualization",
+    "href": "hazards.html#data-visualization",
+    "title": "7  hazards",
+    "section": "7.3 Data visualization",
+    "text": "7.3 Data visualization\n\nggsurvplot(\n  df,\n  ggtheme = theme_minimal(),    \n  linetype = \"strata\",     \n  risk.table = TRUE,      \n  risk.table.col = \"strata\",  \n  conf.int = TRUE,         \n  pval = TRUE,        \n  palette = c(\"#fdbf11\", \"#12719e\"),\n  legend.labs = c(\"Male\", \"Female\")\n)"
   },
   {
     "objectID": "humans.html#quarto",
@@ -98,18 +161,25 @@
     "text": "9.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
   },
   {
-    "objectID": "hybrid.html#quarto",
-    "href": "hybrid.html#quarto",
+    "objectID": "hybrid.html#setup",
+    "href": "hybrid.html#setup",
     "title": "10  hybrid",
-    "section": "10.1 Quarto",
-    "text": "10.1 Quarto\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org."
+    "section": "10.1 Setup",
+    "text": "10.1 Setup\n\nlibrary(tidyverse)"
   },
   {
-    "objectID": "hybrid.html#running-code",
-    "href": "hybrid.html#running-code",
+    "objectID": "hybrid.html#creating-dataset",
+    "href": "hybrid.html#creating-dataset",
     "title": "10  hybrid",
-    "section": "10.2 Running Code",
-    "text": "10.2 Running Code\nWhen you click the Render button a document will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n1 + 1\n\n[1] 2\n\n\nYou can add options to executable code like this\n\n\n[1] 4\n\n\nThe echo: false option disables the printing of code (only output is displayed)."
+    "section": "10.2 Creating dataset",
+    "text": "10.2 Creating dataset\n\n# Create example data for location 1\nlocation1 &lt;- data.frame(date = seq(as.Date(\"2022-01-01\"), by = \"month\", length.out = 12),\n                        index = c(1.75, 1.80, 1.85, 1.90, 1.85, 1.80, 2.70, 2.65, 2.60, 2.55, 2.50, 2.45))\n\n# Create example data for location 2\nlocation2 &lt;- data.frame(date = seq(as.Date(\"2022-01-01\"), by = \"month\", length.out = 12),\n                        index = c(1.80, 1.82, 1.86, 1.90, 1.85, 1.90, 2.95, 2.90, 2.80, 2.75, 2.70, 2.65))\n\n# Combine data for both locations into a single dataframe\nbiodiversity_data &lt;- data.frame(location = c(rep(\"Location 1\", 12), rep(\"Location 2\", 12)),\n                                date = c(location1$date, location2$date),\n                                index = c(location1$index, location2$index))"
+  },
+  {
+    "objectID": "hybrid.html#data-visualization",
+    "href": "hybrid.html#data-visualization",
+    "title": "10  hybrid",
+    "section": "10.3 Data visualization",
+    "text": "10.3 Data visualization\n\nloc.cols &lt;- c(\"Location 1\" = \"#023047\", \"Location 2\" = \"#f1a208\")\nggplot(data = biodiversity_data, aes(x = date, y = index, color = location)) +\n  geom_line(linewidth = 1) +\n  geom_point(size = 2) +\n  labs(x = NULL, y = \"Biodiversity Index\", color = \"Location\") +\n  ggtitle(\"Monitoring of Biodiversity Index in 2022\") +\n  geom_text(data = biodiversity_data[biodiversity_data$date &gt;= \"2022-05-01\" &\n                                       biodiversity_data$location == \"Location 1\",],\n            aes(label = index), hjust = -0.3, vjust = -0.4, size = 3, color = \"black\") +\n  geom_text(data = biodiversity_data[biodiversity_data$date &gt;= \"2022-05-01\" &\n                                       biodiversity_data$location == \"Location 2\",],\n            aes(label = index), hjust = -0.3, vjust = -0.4, size = 3, color = \"black\")+\n  scale_color_manual(values = loc.cols)+\n  theme_classic()+\n  annotate(geom=\"text\", y=2.65, x=c(as_date(\"2022-12-01\")), label=\"Location 2\",\n             color=\"#f1a208\", hjust = -0.5, fontface = \"bold\")+\n    annotate(geom=\"text\", y=2.45, x=c(as_date(\"2022-12-01\")), label=\"Location 1\",\n             color=\"#023047\", hjust = -0.5, fontface = \"bold\")+\n  theme(legend.position = \"right\")+\n  scale_x_date(date_labels = \"%b\", breaks = biodiversity_data$date)+\n    coord_cartesian(ylim=c(0,3),clip=\"off\")+\n    geom_vline(xintercept = c(as_date(\"2022-5-01\")), color = \"firebrick\")"
   },
   {
     "objectID": "circular.html",
@@ -172,7 +242,7 @@
     "href": "anthropocene.html",
     "title": "19  anthropocene",
     "section": "",
-    "text": "Explore time series data related to the human impact on the environment. Visualize trends in environmental indicators, climate change data, or other anthropogenic factors."
+    "text": "Explore time series data related to the human impact on the environment. Visualize trends in environmental indicators, climate change data, or other anthropogenic factors.\n\nlibrary(tidyverse)\nlibrary(hockeystick)\n\nThe plot will be customised soon"
   },
   {
     "objectID": "correlation.html",

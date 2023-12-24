@@ -4,25 +4,76 @@ format: html
 editor: visual
 filters:
   - webr
+code-copy: false
+code-block-bg: true
+code-block-border-left: "#023047"
 ---
 
-## Quarto
+## Setup
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
-
-```{r}
-1 + 1
+```{r setup, include=TRUE, message=FALSE, warning=FALSE}
+library(highcharter) 
+library(viridis) 
+library(tidyverse) 
+library(countrycode) 
+library(crosstalk) 
+library(plotly) 
 ```
 
-You can add options to executable code like this
+## Data preparation
 
-```{r}
-#| echo: false
-2 * 2
+```{r }
+
+
+data1 <- read.csv("dataset/number-of-deaths-from-tetanus.csv")
+data11 <- data1 %>%
+  select(Year, Deaths) %>%
+  group_by(Year) %>%
+  summarise(Deaths = round((sum(Deaths))), 2)
+##
+country_tibble1 <- data1 %>%
+  select(Entity, Deaths) %>%
+  filter(Entity != 'African Region (WHO)',
+         Entity != 'East Asia & Pacific (WB)',
+         Entity != 'Eastern Mediterranean Region (WHO)',
+         Entity != 'Europe & Central Asia (WB)',
+         Entity != 'European Region (WHO)',
+         Entity != 'G20',
+         Entity != 'Latin America & Caribbean (WB)',
+         Entity != 'Middle East & North Africa (WB)',
+         Entity != 'North America (WB)',
+         Entity != 'OECD Countries',
+         Entity != 'Region of the Americas (WHO)',
+         Entity != 'South Asia (WB)',
+         Entity != 'South-East Asia Region (WHO)',
+         Entity != 'Sub-Saharan Africa (WB)',
+         Entity != 'Western Pacific Region (WHO)',
+         Entity != 'World Bank High Income',
+         Entity != 'World Bank Low Income',
+         Entity != 'World Bank Lower Middle Income',
+         Entity != 'World Bank Upper Middle Income',
+         Entity != 'World')%>%
+  group_by(Entity) %>%
+  summarize(Deaths = round((sum(Deaths))), 2) 
+
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+## Worldwide deaths from tetanus infection
+
+```{r}
+highchart() %>% 
+  hc_add_series(data11, hcaes(x = Year, y = Deaths), type = "line") %>%
+  hc_tooltip(crosshairs = TRUE, borderWidth = 1.5, headerFormat = "", pointFormat = paste("Year: <b>{point.x}</b> <br> Deaths: <b>{point.y}</b>")) %>%
+  hc_title(text = "Worldwide cases of death from tetanus") %>% 
+  hc_subtitle(text = "1990-2019") %>%
+  hc_colorAxis(minColor = "yellow", maxColor = "#592822") %>%
+  hc_xAxis(title = list(text = "Year")) %>%
+  hc_yAxis(title = list(text = "Deaths"),
+           allowDecimals = FALSE,
+           plotLines = list(list(
+             color = "black", width = 1, dashStyle = "Dash", 
+             value = mean(data11$Deaths),
+             label = list(text = "Mean = 667745.9", 
+                          style = list(color = "black"))))) %>%
+  hc_legend(enabled = FALSE) 
+```

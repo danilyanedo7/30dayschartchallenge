@@ -4,6 +4,9 @@ format: html
 editor: visual
 filters:
   - webr
+code-copy: false
+code-block-bg: true
+code-block-border-left: "#023047"
 ---
 
 Explore charts that depict the introduction or impact of a new tool or technology. Visualize adoption rates, user engagement, or any relevant metrics.

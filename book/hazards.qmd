@@ -2,25 +2,38 @@
 title: "hazards"
 format: html
 editor: visual
+code-copy: false
+code-block-bg: true
+code-block-border-left: "#023047"
 ---
 
-## Quarto
+## Setup
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
-
-```{r}
-1 + 1
+```{r, message=FALSE, warning=FALSE}
+library(survminer)
+require(survival)
 ```
 
-You can add options to executable code like this
+## Data preparation
 
-```{r}
-#| echo: false
-2 * 2
+```{r, message=FALSE, warning=FALSE}
+data("lung")
+df <- survfit(Surv(time, status) ~ sex, data = lung)
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+## Data visualization
+
+```{r}
+ggsurvplot(
+  df,
+  ggtheme = theme_minimal(),    
+  linetype = "strata",     
+  risk.table = TRUE,      
+  risk.table.col = "strata",  
+  conf.int = TRUE,         
+  pval = TRUE,        
+  palette = c("#fdbf11", "#12719e"),
+  legend.labs = c("Male", "Female")
+)
+
+```

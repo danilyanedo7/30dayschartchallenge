@@ -4,6 +4,38 @@ format: html
 editor: visual
 filters:
   - webr
+code-copy: false
+code-block-bg: true
+code-block-border-left: "#023047"
 ---
 
 Implement slope charts to depict the rate of change between two points. This is particularly useful for illustrating trends and making comparisons between different periods.
+
+## Setup
+
+```{r, warning=FALSE, message=FALSE}
+library(tidyverse) 
+library(CGPfunctions)
+```
+
+## Data preparation
+
+```{r}
+newcancer %>%
+  filter()
+df <- newcancer[1:32, ]
+
+```
+
+## Data visualization
+
+```{r}
+newggslopegraph(dataframe = df,
+                Times = Year,
+                Measurement = Survival,
+                Grouping = Type,
+                Title = "",
+                SubTitle = "",
+                LineColor =  c("firebrick", rep("gray",4), "firebrick", rep("gray",2)),
+                Caption = NULL)
+```

@@ -4,6 +4,9 @@ format: html
 editor: visual
 filters:
   - webr
+code-copy: false
+code-block-bg: true
+code-block-border-left: "#023047"
 ---
 
 Apply the chosen theme using data or topics related to BBC News. This could involve visualizing news trends, audience engagement, or other relevant metrics.

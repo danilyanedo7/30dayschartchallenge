@@ -4,5 +4,25 @@ format: html
 editor: visual
 filters:
   - webr
+code-copy: false
+code-block-bg: true
+code-block-border-left: "#023047"
 ---
+
 Explore time series data related to the human impact on the environment. Visualize trends in environmental indicators, climate change data, or other anthropogenic factors.
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(hockeystick)
+```
+
+The plot will be customised soon
+```{r, echo=FALSE}
+globaldaily <- get_temp()
+plot_temp(globaldaily)
+```
+
+```{r}
+
+```
+

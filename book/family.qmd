@@ -4,6 +4,9 @@ format: html
 editor: visual
 filters:
   - webr
+code-copy: false
+code-block-bg: true
+code-block-border-left: "#023047"
 ---
 
 Depict relationships within family structures or dynamics. This could involve visualizing family sizes, generational trends, or other familial aspects.

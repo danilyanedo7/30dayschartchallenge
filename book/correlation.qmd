@@ -4,6 +4,9 @@ format: html
 editor: visual
 filters:
   - webr
+code-copy: false
+code-block-bg: true
+code-block-border-left: "#023047"
 ---
 
 Visualize correlations between different variables over time. Use line charts, scatter plots, or other techniques to showcase relationships between time-varying data points.

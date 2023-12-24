@@ -4,6 +4,9 @@ format: html
 editor: visual
 filters:
   - webr
+code-copy: false
+code-block-bg: true
+code-block-border-left: "#023047"
 ---
 
 Apply the chosen theme using data or topics related to UN Women. This could involve visualizing gender-related trends, women's empowerment metrics, or other relevant data.

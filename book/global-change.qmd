@@ -4,6 +4,9 @@ format: html
 editor: visual
 filters:
   - webr
+code-copy: false
+code-block-bg: true
+code-block-border-left: "#023047"
 ---
 
 Visualize data related to global changes and uncertainties. This could include climate change data, geopolitical trends, or other global-scale uncertainties.

@@ -4,5 +4,9 @@ format: html
 editor: visual
 filters:
   - webr
+code-copy: false
+code-block-bg: true
+code-block-border-left: "#023047"
 ---
+
 Highlight positive and negative relationships within the data. Use charts to showcase correlations or trends that have positive or negative implications.

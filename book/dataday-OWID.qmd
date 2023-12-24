@@ -4,13 +4,16 @@ format: html
 editor: visual
 filters:
   - webr
+code-copy: false
+code-block-bg: true
+code-block-border-left: "#023047"
 ---
 
 Dedicate a day to exploring data from Our World in Data (OWID), applying the chosen theme to the datasets available on this platform.
 
+## Setup
 
-
-```{r setup, include=TRUE}
+```{r setup, include=TRUE, message=FALSE, warning=FALSE}
 library(highcharter) 
 library(viridis) 
 library(tidyverse) 
@@ -19,16 +22,18 @@ library(crosstalk)
 library(plotly) 
 ```
 
-```{r }
+## Dataset preparation
 
-#### 
+```{r, message=FALSE, warning=FALSE}
+
+
 
 data1 <- read.csv("dataset/number-of-deaths-from-tetanus.csv")
 data11 <- data1 %>%
   select(Year, Deaths) %>%
   group_by(Year) %>%
   summarise(Deaths = round((sum(Deaths))), 2)
-##
+
 country_tibble1 <- data1 %>%
   select(Entity, Deaths) %>%
   filter(Entity != 'African Region (WHO)',
@@ -56,9 +61,9 @@ country_tibble1 <- data1 %>%
 
 ```
 
+## Map
 
-## Map 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 highchart() %>%
   hc_add_series_map(worldgeojson, country_tibble1, value = "Deaths", 
                     joinBy = c('name','Entity'))  %>% 
@@ -72,6 +77,5 @@ highchart() %>%
 
 ```
 
-
-The data set used to create the dashboard can be found at:   
+The data set used to create the dashboard can be found at:\
 https://ourworldindata.org/tetanus

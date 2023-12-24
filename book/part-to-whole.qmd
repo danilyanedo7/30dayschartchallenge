@@ -3,6 +3,9 @@ title: "part-to-whole"
 format: html
 filters:
   - webr
+code-copy: false
+code-block-bg: true
+code-block-border-left: "#023047"
 ---
 
 Explore the relationship between a whole and its components, showcasing proportions and percentages. Ideal for visualizing contributions of individual elements to the overall entity.

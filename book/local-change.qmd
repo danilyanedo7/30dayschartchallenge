@@ -4,7 +4,11 @@ format: html
 editor: visual
 filters:
   - webr
+code-copy: false
+code-block-bg: true
+code-block-border-left: "#023047"
 ---
+
 ## Install and load the tidyverse and ggplot2 packages if not already installed
 
 ```{r}
@@ -30,8 +34,8 @@ if (!require(viridis)) {
 data <- data <- read_csv('dataset/FAOSTAT_data_1-10-2022.csv')
 ```
 
-
 ## Filter data based on conditions
+
 ```{r}
 country <- 'Indonesia'
 
@@ -45,8 +49,8 @@ years <- filtered_data$Year
 month <- filtered_data$Months
 ```
 
-
 ## Create a data frame with the extracted data
+
 ```{r}
 df <- data.frame(Year = years, Temperature = temps, month)
 df <- df %>% 
@@ -54,8 +58,8 @@ df <- df %>%
   summarise(Temperature = mean(Temperature))
 ```
 
-
 ## Create the ggplot with a bar chart and colormap
+
 ```{r}
 plot <- ggplot(df, aes(x = Year, y = Temperature, fill = Temperature)) +
   geom_bar(stat = "identity") +
@@ -67,7 +71,7 @@ plot <- ggplot(df, aes(x = Year, y = Temperature, fill = Temperature)) +
 ```
 
 ## Print the plot
+
 ```{r}
 plot
 ```
-

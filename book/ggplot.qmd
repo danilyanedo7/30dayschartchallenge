@@ -6,6 +6,9 @@ webr:
   - packages: ['ggplot2']
 filters:
   - webr
+code-copy: false
+code-block-bg: true
+code-block-border-left: "#023047"
 ---
 
 ::: callout-warning

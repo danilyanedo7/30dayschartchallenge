@@ -4,6 +4,9 @@ format: html
 editor: visual
 filters:
   - webr
+code-copy: false
+code-block-bg: true
+code-block-border-left: "#023047"
 ---
 
 Use circular charts to represent distributions in a visually appealing manner. Explore pie charts, radial bar charts, or circular heatmaps to convey data distributions.

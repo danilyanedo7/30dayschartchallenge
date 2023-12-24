@@ -4,5 +4,9 @@ format: html
 editor: visual
 filters:
   - webr
+code-copy: false
+code-block-bg: true
+code-block-border-left: "#023047"
 ---
+
 Showcase trends with downward or upward trajectories. This could involve visualizing economic trends, market movements, or any data that exhibits directional changes.

@@ -4,6 +4,9 @@ format: html
 editor: visual
 filters:
   - webr
+code-copy: false
+code-block-bg: true
+code-block-border-left: "#023047"
 ---
 
 Use tiled charts to represent multiple time series effectively. This allows for a clear comparison of trends across different variables or datasets.

@@ -4,6 +4,9 @@ format: html
 editor: visual
 filters:
   - webr
+code-copy: false
+code-block-bg: true
+code-block-border-left: "#023047"
 ---
 
 Visualize complex relationships and connections in network data. Explore network graphs and charts to represent intricate relationships between nodes.

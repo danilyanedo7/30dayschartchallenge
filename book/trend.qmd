@@ -4,6 +4,9 @@ format: html
 editor: visual
 filters:
   - webr
+code-copy: false
+code-block-bg: true
+code-block-border-left: "#023047"
 ---
 
 Illustrate trends and uncertainties in data over time. Use charts that effectively convey both the direction and degree of uncertainty in trends.

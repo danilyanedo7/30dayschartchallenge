@@ -4,5 +4,9 @@ format: html
 editor: visual
 filters:
   - webr
+code-copy: false
+code-block-bg: true
+code-block-border-left: "#023047"
 ---
+
 Dedicate a day to exploring data from EuroStat, applying the chosen theme to datasets available from this statistical office of the European Union.
